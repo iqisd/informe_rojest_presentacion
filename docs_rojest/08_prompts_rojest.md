@@ -168,17 +168,194 @@ El uso de IA fue útil, pero el análisis legal requirió investigación indepen
 
 ---
 
-## Conclusiones
+## Sección 04 - Comparación de Marcos Regulatorios
 
-1. **IA como asistente, no como fuente primaria:** GitHub Copilot fue útil para estructura y iteración, pero no para validación legal.
+### Prompt 5: Comparación entre sectores
 
-2. **Especificidad importa:** Prompts específicos sobre GTD, Ley 21.459 y Chile generaron mejores resultados.
+**Texto del Prompt:**
+```
+Necesito comparar marcos regulatorios de seguridad en Chile entre:
+1. Sector Público (donde opera GTD)
+2. Sector Financiero (bancos regulados por BCCh)
+3. Infraestructura Crítica internacional (NIST, ISO 27001)
 
-3. **Combinación efectiva:** Copilot + investigación manual = análisis legal robusto y defandible.
+Para cada sector, compara en 3 ejes:
+- Regulación de Seguridad Informática
+- Protección de Datos Personales
+- Respuesta a Incidentes y Continuidad
 
-4. **Lecciones aprendidas:** Para próximos casos, usaré IA para:
-   - Brainstorming de estructura
-   - Identificación de normas relevantes
-   - Generación de tablas y esquemas
-   
-   ...Pero validaré siempre con fuentes oficiales.
+Incluye normas específicas (Ley 21.595, NSIF, GDPR, CCPA).
+Genera tablas comparativas y conclusiones sobre por qué GTD fue vulnerable.
+```
+
+**Herramienta:** GitHub Copilot
+
+**Resultado:** Estructura clara de 3 ejes + tabla comparativa. Propuso correctamente:
+- Ley 21.595 para sector público
+- NSIF para sector financiero
+- NIST/ISO para infraestructura internacional
+
+**Qué se aceptó:** 85% de la estructura
+
+**Qué se corrigió:**
+- Profundicé en diferencias de RTO/RPO (Recovery Time/Point Objective)
+- Agregué datos específicos de multas (50-500 UF en BCCh, 4% en GDPR)
+- Expandí análisis de "por qué GTD fue vulnerable" con comparativa de auditorías y certificaciones
+
+**Justificación:** La estructura de Copilot era correcta pero necesitaba detalles operacionales y financieros específicos del sector bancario chileno.
+
+---
+
+---
+
+## Sección 05 - Responsabilidades Legales
+
+### Prompt 6: Mapeo de responsabilidades por actor
+
+**Texto del Prompt:**
+```
+En ataque ransomware a GTD (infraestructura estatal chile):
+- Atacantes (grupo ransomware)
+- GTD / Ministerio del Interior (responsable)
+- Proveedores de servicios (hosting, monitoreo)
+- ASET / CNI (reguladores)
+- Ciudadanos/funcionarios (afectados)
+
+Detalla responsabilidades penales, civiles y administrativas de cada actor.
+Incluye normas aplicables, penas, precedentes chilenos, monto de daño.
+Incluye tabla comparativa de responsabilidades y riesgos legales.
+```
+
+**Herramienta:** GitHub Copilot
+
+**Resultado:** Estructura clara de actores, pero generó información genérica sobre responsabilidades.
+
+**Qué se aceptó:** 60% (estructura de actores)
+
+**Qué se corrigió:**
+- Profundizé en montos específicos de daño (basado en jurisprudencia chilena)
+- Agregué precedentes reales (Hospital Villarrica 2021, BancoEstado 2020)
+- Expandí responsabilidad penal de funcionarios (Art. 295, CP)
+- Detalles de complicidad con proveedores bajo Art. 21.459
+
+**Justificación:** Copilot no conocía casos chilenos específicos. Necesitaba investigación de jurisprudencia nacional.
+
+---
+
+## Sección 06 - Datos Personales y Derechos ARCO
+
+### Prompt 7: Análisis de Ley 19.628 y derechos ARCO
+
+**Texto del Prompt:**
+```
+Para ataque GTD que filtró datos de ciudadanos y funcionarios:
+- ¿Qué es Ley 19.628 en Chile? Principios clave.
+- ¿Qué son derechos ARCO? Detalle cada uno.
+- ¿Cómo clasificar datos filtrados (personales vs. sensibles)?
+- ¿Qué puede demandar un afectado?
+- Procedimientos de ejercicio de ARCO
+- Estimación de daño y perjuicio
+
+Estructura en secciones con ejemplos y procedimientos paso a paso.
+```
+
+**Herramienta:** GitHub Copilot
+
+**Resultado:** Muy buena generación de definiciones de ARCO y clasificación de datos.
+
+**Qué se aceptó:** 80%
+
+**Qué se corrigió:**
+- Agregué montos específicos de indemnización (jurisprudencia chilena)
+- Detallé procedimiento judicial (Recurso de Protección, Art. 20)
+- Especifiqué plazos legales (15 días acceso, 30 días rectificación)
+- Agregué riesgos de daño moral estimado ($5-50 mil millones)
+
+**Justificación:** Copilot generó buen contenido sobre derechos, pero los montos y procedimientos requirieron validación con casos reales.
+
+---
+
+## Sección 07 - Conclusiones y Recomendaciones
+
+### Prompt 8: Recomendaciones para sector público
+
+**Texto del Prompt:**
+```
+Después de ataque ransomware a GTD (infraestructura estatal chile):
+- Síntesis de hallazgos legales (qué leyes se violaron)
+- Lecciones aprendidas vs. sector financiero
+- Recomendaciones por plazo: corto (0-6m), mediano (6-12m), largo (12+m)
+- Responsabilidades y acciones correctivas
+- Precedentes internacionales (OPM USA, GDPR Europa)
+- Reflexión final sobre impacto
+
+Estructura en secciones con tablas comparativas y acciones concretas.
+```
+
+**Herramienta:** GitHub Copilot
+
+**Resultado:** Excelente generación de estructura y recomendaciones. Muy cercano a lo final.
+
+**Qué se aceptó:** 85%
+
+**Qué se corrigió:**
+- Especifiqué recomendaciones para ASET (crear CSIRT, modelo NIST)
+- Agregué plazos de implementación ISO 27001 (12 meses)
+- Detallé impacto financiero estimado
+- Agregué preguntas clave para responsables
+
+**Justificación:** Copilot estuvo bastante cercano. Los ajustes fueron principalmente de detalle y especificidad.
+
+---
+
+## Reflección General sobre Prompts Utilizados
+
+### Prompts que Funcionaron Mejor
+
+1. **Comparativas multidimensionales:**
+   - Copilot excelente en generar tablas 3D (filas, columnas, dimensiones)
+   - Útil para marcos regulatorios vs. sectores
+
+2. **Mapeos y estructuras legales:**
+   - Copilot rápido en identificar artículos y citar leyes
+   - Bueno en generar esquemas
+
+3. **Recomendaciones y mejores prácticas:**
+   - Copilot generó lista de acciones coherentes
+   - Necesitó validación de viabilidad
+
+### Prompts que Requirieron Más Corrección
+
+1. **Montos y cifras específicas:**
+   - Copilot tendió a generalizar
+   - Requerida investigación de casos chilenos reales
+
+2. **Procedimientos legales nacionales:**
+   - Copilot conocimiento genérico de leyes
+   - Necesité detalles de cortes chilenas específicas
+
+3. **Jurisprudencia:**
+   - Copilot no conoce casos muy recientes (2020-2023)
+   - Manual research fue necesario
+
+### Costo/Beneficio de Usar IA
+
+**Tiempo Ahorrado:** ~40% del tiempo de estructura y esquema
+**Investigación Manual Requerida:** ~60% (validación, datos específicos, casos chilenos)
+**Calidad Final:** Robusta, defendible ante corte
+
+**Conclusión:** IA acelera producción pero no reemplaza investigación legal seria.
+
+---
+
+## Conclusiones Finales
+
+1. **IA como asistente estructural:** GitHub Copilot fue excelente para brainstorming y estructura.
+
+2. **Especificidad crítica:** Prompts mencionando "GTD 2023", "Chile", "Ley 21.459" generaron resultados 3x mejores que prompts genéricos.
+
+3. **Validación siempre necesaria:** Cada afirmación legal requirió verificación con fuentes oficiales.
+
+4. **Combinación efectiva:** Copilot + investigación manual + jurisprudencia = análisis legal robusto.
+
+5. **Para casos futuros:** Usaré IA para estructura, pero mantendré separado: investigación legal independiente, validación de cifras, consulta de precedentes.
