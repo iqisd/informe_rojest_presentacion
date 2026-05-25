@@ -1,4 +1,4 @@
-import { Shield, BookOpen, Scale, AlertCircle, BarChart3, Users, Lock, CheckCircle, Code } from 'lucide-react'
+import { Shield, BookOpen, Scale, AlertCircle, BarChart3, Users, Lock, CheckCircle, Code, ExternalLink } from 'lucide-react'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 
 import Resumen from './components/Resumen'
@@ -34,7 +34,18 @@ function Home() {
               </p>
             </div>
           </div>
-          <p className="text-slate-200 text-sm">INACAP Valparaíso | Docente: Rubén Schnettler L. | Estudiante: Esteban Rojas</p>
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <p className="text-slate-200 text-sm">INACAP Valparaíso | Docente: Rubén Schnettler L. | Estudiante: Esteban Rojas</p>
+            <a
+              href="https://github.com/iqisd"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 self-start rounded-full border border-slate-600 bg-slate-800/60 px-4 py-2 text-sm font-medium text-white transition hover:border-slate-400 hover:bg-slate-700"
+            >
+              <ExternalLink size={16} />
+              GitHub: iqisd
+            </a>
+          </div>
         </div>
       </header>
 
