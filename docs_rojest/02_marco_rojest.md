@@ -174,8 +174,8 @@ El ataque a la Gobernación Territorial Digital (GTD) en 2023 invoca un conjunto
 
 ## 4. Conclusiones del Marco Normativo
 
-1. **Ley 21.459** es la normativa **principal** para tipificación de delitos en el caso GTD.
-2. **Ley 19.628** y derechos ARCO son clave para **protección de datos** de afectados.
-3. **Ley 21.595** define responsabilidades de seguridad que GTD potencialmente incumplió.
-4. Estándares internacionales (**ISO 27001, NIST, Convención Budapest**) proporcionan contexto regulatorio más amplio.
-5. Responsabilidades son **multidimensionales:** penales, civiles y administrativas.
+- **Ley 21.459** es la normativa **principal** para tipificación de delitos en el caso GTD.
+- **Ley 19.628** y derechos ARCO son clave para **protección de datos** de afectados.
+- **Ley 21.595** define responsabilidades de seguridad que GTD potencialmente incumplió.
+- Estándares internacionales (ISO 27001, NIST, Convención Budapest) proporcionan contexto regulatorio más amplio.
+- Responsabilidades son **multidimensionales:** penales, civiles y administrativas.
