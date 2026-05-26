@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- Analytics/Comparison icon -->
+  <defs>
+    <linearGradient id="analyticsGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#A855F7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7E22CE;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <g transform="translate(100, 100)">
+    <!-- Chart background -->
+    <rect x="-50" y="-50" width="100" height="80" rx="5" fill="url(#analyticsGradient)" opacity="0.1" stroke="#A855F7" stroke-width="2"/>
+    
+    <!-- Bar 1 -->
+    <rect x="-30" y="-10" width="12" height="40" fill="#A855F7"/>
+    <line x1="-30" y1="30" x2="-18" y2="30" stroke="#A855F7" stroke-width="1"/>
+    
+    <!-- Bar 2 -->
+    <rect x="-10" y="-25" width="12" height="55" fill="#EC4899"/>
+    <line x1="-10" y1="30" x2="2" y2="30" stroke="#EC4899" stroke-width="1"/>
+    
+    <!-- Bar 3 -->
+    <rect x="10" y="-18" width="12" height="48" fill="#06B6D4"/>
+    <line x1="10" y1="30" x2="22" y2="30" stroke="#06B6D4" stroke-width="1"/>
+    
+    <!-- Bar 4 -->
+    <rect x="30" y="-32" width="12" height="62" fill="#10B981"/>
+    <line x1="30" y1="30" x2="42" y2="30" stroke="#10B981" stroke-width="1"/>
+    
+    <!-- Axis -->
+    <line x1="-45" y1="30" x2="45" y2="30" stroke="#A855F7" stroke-width="2"/>
+    <line x1="-45" y1="-40" x2="-45" y2="30" stroke="#A855F7" stroke-width="2"/>
+    
+    <!-- Text -->
+    <text x="0" y="65" font-size="12" font-weight="bold" text-anchor="middle" fill="#A855F7">ANÁLISIS</text>
+  </g>
+</svg>

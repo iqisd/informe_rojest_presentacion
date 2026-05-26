@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- Ransomware threat indicator -->
+  <defs>
+    <linearGradient id="ransomGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#EF4444;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#991B1B;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <g transform="translate(100, 100)">
+    <!-- Warning circle background -->
+    <circle cx="0" cy="0" r="75" fill="url(#ransomGradient)" opacity="0.2" stroke="#EF4444" stroke-width="2"/>
+    
+    <!-- Locked document -->
+    <rect x="-30" y="-35" width="60" height="50" rx="4" fill="#EF4444" stroke="#991B1B" stroke-width="2"/>
+    
+    <!-- Document lines -->
+    <line x1="-20" y1="-20" x2="20" y2="-20" stroke="white" stroke-width="2"/>
+    <line x1="-20" y1="-8" x2="20" y2="-8" stroke="white" stroke-width="2"/>
+    <line x1="-20" y1="4" x2="20" y2="4" stroke="white" stroke-width="2"/>
+    
+    <!-- Lock overlay -->
+    <rect x="-15" y="8" width="30" height="18" rx="2" fill="white" stroke="#EF4444" stroke-width="1.5"/>
+    <circle cx="0" cy="0" r="7" fill="none" stroke="white" stroke-width="2"/>
+    <circle cx="0" cy="0" r="2" fill="white"/>
+    
+    <!-- Warning text -->
+    <text x="0" y="65" font-size="12" font-weight="bold" text-anchor="middle" fill="#EF4444">RANSOMWARE</text>
+  </g>
+</svg>

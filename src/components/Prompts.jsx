@@ -1,4 +1,4 @@
-import { Code, MessageCircle } from 'lucide-react';
+import { Code, MessageCircle, Home, BookOpen, TrendingUp } from 'lucide-react';
 
 export default function Prompts() {
   const prompts = [
@@ -69,40 +69,57 @@ export default function Prompts() {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-50 py-12 px-6">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-12 px-6">
       <div className="max-w-5xl mx-auto">
-        <div className="mb-8 flex items-center gap-3">
-          <Code className="text-indigo-600" size={32} />
-          <h1 className="text-3xl font-bold text-slate-900">Bitácora: Uso de GitHub Copilot</h1>
+        {/* Header */}
+        <div className="mb-8">
+          <a href="/" className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition mb-4">
+            <Home size={18} />
+            Volver al inicio
+          </a>
+          <div className="flex items-center gap-4 mb-6">
+            <div className="w-16 h-16 bg-gradient-to-br from-indigo-400 to-indigo-600 rounded-lg p-3 shadow-lg flex items-center justify-center">
+              <Code className="text-white w-full h-full" />
+            </div>
+            <div>
+              <h1 className="text-4xl font-bold text-white">Bitácora: Uso de GitHub Copilot</h1>
+              <p className="text-slate-300">Prompts utilizados y evaluación de resultados</p>
+            </div>
+          </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow-md p-8 space-y-6">
+        <div className="space-y-6">
+          {/* Prompts Utilizados */}
           <section>
-            <h2 className="text-2xl font-bold text-slate-800 mb-4">Prompts Utilizados</h2>
+            <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+              <MessageCircle size={24} className="text-blue-400" />
+              Prompts Utilizados
+            </h2>
             
             <div className="space-y-4">
               {prompts.map((p) => (
-                <div key={p.numero} className="border border-slate-200 rounded-lg p-5 hover:shadow-md transition">
+                <div key={p.numero} className="bg-gradient-to-r from-slate-800/50 to-slate-700/50 backdrop-blur-sm border border-slate-600/50 rounded-lg p-6 hover:border-indigo-400/50 transition">
                   <div className="flex items-start gap-4">
-                    <div className="bg-indigo-100 text-indigo-700 font-bold w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0">
+                    <div className="bg-gradient-to-br from-indigo-500 to-indigo-700 text-white font-bold w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
                       {p.numero}
                     </div>
                     
                     <div className="flex-grow">
-                      <div className="flex items-center gap-2 mb-2">
-                        <h3 className="font-bold text-slate-900">{p.seccion}</h3>
-                        <span className="text-xs bg-slate-200 px-2 py-1 rounded">{p.herramienta}</span>
+                      <div className="flex items-center gap-2 mb-3 flex-wrap">
+                        <h3 className="font-bold text-white text-lg">{p.seccion}</h3>
+                        <span className="text-xs bg-indigo-500/30 border border-indigo-400 text-indigo-300 px-3 py-1 rounded-full font-semibold\">{p.herramienta}</span>
                       </div>
                       
-                      <p className="text-sm text-slate-700 mb-2 italic">"{p.prompt}"</p>
+                      <p className="text-slate-300 mb-3 italic border-l-2 border-indigo-400 pl-3\">"{p.prompt}"</p>
                       
                       <div className="grid grid-cols-2 gap-3 text-sm">
-                        <div className="bg-green-50 px-3 py-2 rounded">
-                          <p className="font-semibold text-slate-900">Se aceptó: {p.aceptado}</p>
+                        <div className="bg-gradient-to-r from-green-500/20 to-green-600/10 border border-green-400/30 rounded-lg p-3">
+                          <p className="font-semibold text-green-300">✓ Se aceptó</p>
+                          <p className="text-white font-bold text-lg">{p.aceptado}</p>
                         </div>
-                        <div className="bg-orange-50 px-3 py-2 rounded">
-                          <p className="font-semibold text-slate-900">Se corrigió:</p>
-                          <p className="text-slate-700 text-xs">{p.corregido}</p>
+                        <div className="bg-gradient-to-r from-orange-500/20 to-orange-600/10 border border-orange-400/30 rounded-lg p-3">
+                          <p className="font-semibold text-orange-300">⚙️ Se corrigió</p>
+                          <p className="text-slate-300 text-xs">{p.corregido}</p>
                         </div>
                       </div>
                     </div>
@@ -112,94 +129,132 @@ export default function Prompts() {
             </div>
           </section>
 
+          {/* Evaluación de Copilot */}
           <section>
-            <h2 className="text-2xl font-bold text-slate-800 mb-4">Evaluación de Copilot</h2>
+            <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+              <TrendingUp size={24} className="text-green-400" />
+              Evaluación de GitHub Copilot
+            </h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="border border-green-300 rounded p-4 bg-green-50">
-                <h3 className="font-bold text-slate-900 mb-2 text-green-700">✓ Fortalezas</h3>
-                <ul className="text-sm text-slate-700 space-y-1 list-disc list-inside">
-                  <li>Generación rápida de estructuras</li>
-                  <li>Tablas multidimensionales precisas</li>
-                  <li>Identificación de normas relevantes</li>
-                  <li>Generación de recomendaciones coherentes</li>
+              <div className="bg-gradient-to-br from-green-500/20 to-green-600/10 backdrop-blur-sm border border-green-400/30 rounded-lg p-6">
+                <h3 className="font-bold text-green-300 mb-4 text-lg">✓ Fortalezas</h3>
+                <ul className="space-y-3 text-slate-300">
+                  {[
+                    "Generación rápida de estructuras",
+                    "Tablas multidimensionales precisas",
+                    "Identificación de normas relevantes",
+                    "Generación de recomendaciones coherentes"
+                  ].map((item, idx) => (
+                    <li key={idx} className="flex items-center gap-2">
+                      <span className="text-green-400 text-lg">+</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
                 </ul>
               </div>
 
-              <div className="border border-red-300 rounded p-4 bg-red-50">
-                <h3 className="font-bold text-slate-900 mb-2 text-red-700">✗ Limitaciones</h3>
-                <ul className="text-sm text-slate-700 space-y-1 list-disc list-inside">
-                  <li>Leyes muy recientes desconocidas</li>
-                  <li>Montos y cifras sin validación</li>
-                  <li>Jurisprudencia reciente (2020+) limitada</li>
-                  <li>Contexto local chileno insuficiente</li>
+              <div className="bg-gradient-to-br from-red-500/20 to-red-600/10 backdrop-blur-sm border border-red-400/30 rounded-lg p-6">
+                <h3 className="font-bold text-red-300 mb-4 text-lg">✗ Limitaciones</h3>
+                <ul className="space-y-3 text-slate-300">
+                  {[
+                    "Leyes muy recientes desconocidas",
+                    "Montos y cifras sin validación",
+                    "Jurisprudencia reciente (2020+) limitada",
+                    "Contexto local chileno insuficiente"
+                  ].map((item, idx) => (
+                    <li key={idx} className="flex items-center gap-2">
+                      <span className="text-red-400 text-lg">−</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>
           </section>
 
+          {/* Especificidad de Prompts */}
           <section>
-            <h2 className="text-2xl font-bold text-slate-800 mb-4">Especificidad de Prompts</h2>
+            <h2 className="text-2xl font-bold text-white mb-4">📝 Especificidad de Prompts</h2>
+            
+            <div className="space-y-4">
+              <div className="bg-gradient-to-r from-red-700/40 to-red-600/30 backdrop-blur-sm border border-red-600/50 rounded-lg p-6">
+                <p className="text-sm font-bold text-red-200 mb-2">❌ Prompt Genérico (Evitado)</p>
+                <p className="text-slate-300 italic text-sm">"Hazme un análisis de ciberseguridad"</p>
+                <p className="text-xs text-red-400 mt-2 font-semibold">Resultado: Genérico, bajo valor</p>
+              </div>
+
+              <div className="bg-gradient-to-r from-green-700/40 to-green-600/30 backdrop-blur-sm border border-green-600/50 rounded-lg p-6">
+                <p className="text-sm font-bold text-green-200 mb-2">✓ Prompt Específico (Usado)</p>
+                <p className="text-slate-300 italic text-sm">"Mapea ataque ransomware a GTD 2023 (Chile) a artículos Ley 21.459, detalla penas y jurisprudencia"</p>
+                <p className="text-xs text-green-400 mt-2 font-semibold">Resultado: Preciso, 85-100% útil</p>
+              </div>
+
+              <div className="bg-gradient-to-r from-blue-500/20 to-blue-600/10 backdrop-blur-sm border border-blue-400/30 rounded-lg p-4">
+                <p className="text-white font-semibold">💡 Conclusión:</p>
+                <p className="text-slate-300 text-sm">Prompts específicos (mencionando caso, normas, país) generaron resultados <strong className="text-blue-300">3x mejores</strong></p>
+              </div>
+            </div>
+          </section>
+
+          {/* Costo/Beneficio */}
+          <section>
+            <h2 className="text-2xl font-bold text-white mb-4">💰 Análisis Costo/Beneficio</h2>
             
             <div className="space-y-3">
-              <div className="bg-red-50 border border-red-200 rounded p-4">
-                <p className="text-sm font-bold text-slate-900 mb-1">❌ Prompt Genérico (Evitado)</p>
-                <p className="text-sm text-slate-700 italic">"Hazme un análisis de ciberseguridad"</p>
-                <p className="text-xs text-slate-600 mt-1">Resultado: Genérico, bajo valor</p>
-              </div>
-
-              <div className="bg-green-50 border border-green-200 rounded p-4">
-                <p className="text-sm font-bold text-slate-900 mb-1">✓ Prompt Específico (Usado)</p>
-                <p className="text-sm text-slate-700 italic">"Mapea ataque ransomware a GTD 2023 (Chile) a artículos Ley 21.459, detalla penas y jurisprudencia"</p>
-                <p className="text-xs text-slate-600 mt-1">Resultado: Preciso, 85-100% útil</p>
-              </div>
-
-              <p className="text-sm text-slate-700">
-                <strong>Conclusión:</strong> Prompts específicos (mencionando caso, normas, país) generaron resultados <strong>3x mejores</strong>
-              </p>
+              {[
+                { label: "Tiempo ahorrado", value: "~40% en estructura y esquematización", color: "green" },
+                { label: "Investigación manual requerida", value: "~60% (validación, datos, casos chilenos)", color: "orange" },
+                { label: "Calidad final", value: "Robusta y defendible ante corte", color: "blue" },
+                { label: "Veredicto", value: "IA acelera producción pero NO reemplaza investigación legal seria", color: "purple" }
+              ].map((item, idx) => (
+                <div key={idx} className={`bg-gradient-to-r from-${item.color}-500/20 to-${item.color}-600/10 backdrop-blur-sm border border-${item.color}-400/30 rounded-lg p-4`}>
+                  <p className={`text-${item.color}-300 font-bold mb-1`}>{item.label}</p>
+                  <p className="text-slate-300">{item.value}</p>
+                </div>
+              ))}
             </div>
           </section>
 
-          <section>
-            <h2 className="text-2xl font-bold text-slate-800 mb-4">Costo/Beneficio</h2>
-            
-            <div className="space-y-2 text-slate-700">
-              <p><strong>Tiempo ahorrado:</strong> ~40% en estructura y esquematización</p>
-              <p><strong>Investigación manual requerida:</strong> ~60% (validación, datos, casos chilenos)</p>
-              <p><strong>Calidad final:</strong> Robusta y defendible ante corte</p>
-              <p><strong>Veredicto:</strong> IA acelera producción pero NO reemplaza investigación legal seria</p>
-            </div>
-          </section>
-
-          <section className="bg-slate-100 border border-slate-300 rounded p-4">
-            <h2 className="text-lg font-bold text-slate-900 mb-2 flex items-center gap-2">
-              <MessageCircle className="text-indigo-600" size={20} />
+          {/* Reflexión Final */}
+          <section className="bg-gradient-to-r from-indigo-700/40 to-indigo-600/30 backdrop-blur-sm border border-indigo-600/50 rounded-lg p-6 shadow-lg">
+            <h2 className="text-lg font-bold text-indigo-200 mb-3 flex items-center gap-2">
+              <Code size={24} className="text-indigo-400" />
               Reflexión Final
             </h2>
-            <p className="text-slate-700 text-sm">
-              GitHub Copilot fue excelente como asistente estructural, pero cada afirmación legal requirió verificación independiente con fuentes oficiales. El uso efectivo de IA en análisis legal requiere: <strong>IA (estructura) + Investigación manual (validación) + Jurisprudencia (defensa)</strong>.
+            <p className="text-slate-200">
+              GitHub Copilot fue excelente como asistente estructural, pero cada afirmación legal requirió verificación independiente con fuentes oficiales. El uso efectivo de IA en análisis legal requiere:
+            </p>
+            <p className="text-indigo-300 font-bold mt-3 text-lg">
+              IA (estructura) + Investigación manual (validación) + Jurisprudencia (defensa)
             </p>
           </section>
 
+          {/* Recomendaciones */}
           <section>
-            <h2 className="text-2xl font-bold text-slate-800 mb-4">Recomendaciones para Casos Futuros</h2>
-            <ul className="text-slate-700 space-y-2">
-              <li>✓ Usar IA para brainstorming y estructura inicial</li>
-              <li>✓ Usar IA para tablas comparativas multidimensionales</li>
-              <li>✓ Usar IA para generación de recomendaciones</li>
-              <li>✗ NO usar IA como fuente primaria de normas</li>
-              <li>✗ NO confiar en montos sin validación de casos reales</li>
-              <li>✗ NO usar para jurisprudencia actual sin verificación</li>
-            </ul>
+            <h2 className="text-2xl font-bold text-white mb-4">✅ Recomendaciones para Casos Futuros</h2>
+            <div className="space-y-2">
+              {[
+                { icon: "✓", text: "Usar IA para brainstorming y estructura inicial", color: "green" },
+                { icon: "✓", text: "Usar IA para tablas comparativas multidimensionales", color: "green" },
+                { icon: "✓", text: "Usar IA para generación de recomendaciones", color: "green" },
+                { icon: "✗", text: "NO usar IA como fuente primaria de normas", color: "red" },
+                { icon: "✗", text: "NO confiar en montos sin validación de casos reales", color: "red" },
+                { icon: "✗", text: "NO usar para jurisprudencia actual sin verificación", color: "red" }
+              ].map((item, idx) => (
+                <div key={idx} className={`bg-gradient-to-r from-${item.color}-500/20 to-${item.color}-600/10 backdrop-blur-sm border border-${item.color}-400/30 rounded-lg p-4 flex items-center gap-3`}>
+                  <span className={`text-${item.color}-400 font-bold text-lg`}>{item.icon}</span>
+                  <span className="text-slate-300">{item.text}</span>
+                </div>
+              ))}
+            </div>
           </section>
         </div>
 
-        <div className="mt-8 flex justify-between gap-4">
-          <a href="/conclusiones" className="px-6 py-2 bg-slate-700 text-white rounded hover:bg-slate-800 transition">
-            ← Conclusiones
-          </a>
-          <a href="/" className="px-6 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition">
-            Ir a Inicio
+        {/* Navigation */}
+        <div className="mt-10 flex justify-center">
+          <a href="/conclusiones" className="px-8 py-3 bg-gradient-to-r from-slate-700 to-slate-800 text-white rounded-lg hover:from-slate-600 hover:to-slate-700 transition transform hover:scale-105 font-semibold shadow-lg">
+            ← Atrás: Conclusiones
           </a>
         </div>
       </div>
