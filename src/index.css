@@ -9,3 +9,62 @@
     @apply box-border;
   }
 }
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.75s ease-out both;
+  }
+
+  .animate-pop-in {
+    animation: popIn 0.55s ease-out both;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media print {
+  /* Hide everything by default */
+  body * {
+    visibility: hidden;
+  }
+
+  /* Show only the active slide */
+  .slide-current, .slide-current * {
+    visibility: visible;
+  }
+
+  /* Position the slide to the top-left for printing */
+  .slide-current {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+
+  /* Remove shadows / backgrounds that may not print well */
+  .slide-current {
+    box-shadow: none !important;
+    background: white !important;
+    color: black !important;
+  }
+}

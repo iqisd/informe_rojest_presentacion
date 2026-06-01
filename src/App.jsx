@@ -1,253 +1,308 @@
-import { Shield, BookOpen, Scale, AlertCircle, BarChart3, Users, Lock, CheckCircle, Code, ExternalLink, Zap, Eye, Layers } from 'lucide-react'
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
-import logoGtd from './assets/logo-gtd.svg'
-import logoRansomware from './assets/logo-ransomware.svg'
-import logoDatos from './assets/logo-datos.svg'
-import logoLegal from './assets/logo-legal.svg'
-import logoAnalytics from './assets/logo-analytics.svg'
+import { useEffect, useState } from 'react'
+import {
+  Activity,
+  ArrowLeft,
+  ArrowRight,
+  Award,
+  BookOpen,
+  CheckCircle,
+  Layers,
+  ShieldCheck,
+  Sparkles,
+  Star,
+  Lightbulb,
+} from 'lucide-react'
 
-import Resumen from './components/Resumen'
-import Marco from './components/Marco'
-import Delitos from './components/Delitos'
-import Comparacion from './components/Comparacion'
-import Responsabilidades from './components/Responsabilidades'
-import Datos from './components/Datos'
-import Conclusiones from './components/Conclusiones'
-import Prompts from './components/Prompts'
-
-function Home() {
-  const secciones = [
-    { titulo: "Marco Normativo Aplicable", icono: Scale, logo: logoLegal, ruta: "/marco", color: "blue", description: "Análisis de leyes chilenas" },
-    { titulo: "Tipificación de Delitos", icono: AlertCircle, logo: logoRansomware, ruta: "/delitos", color: "red", description: "Clasificación de ciberdelitos" },
-    { titulo: "Comparación de Marcos", icono: BarChart3, logo: logoAnalytics, ruta: "/comparacion", color: "purple", description: "Comparativa legal" },
-    { titulo: "Responsabilidades Legales", icono: Users, logo: null, ruta: "/responsabilidades", color: "green", description: "Obligaciones legales" },
-    { titulo: "Datos Personales (ARCO)", icono: Lock, logo: logoDatos, ruta: "/datos", color: "cyan", description: "Protección de datos" },
-    { titulo: "Conclusiones", icono: CheckCircle, logo: null, ruta: "/conclusiones", color: "teal", description: "Síntesis del análisis" },
-    { titulo: "Bitácora de IA", icono: Code, logo: null, ruta: "/prompts", color: "indigo", description: "Prompts utilizados" },
-  ];
-
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex flex-col">
-      {/* Hero Section */}
-      <header className="relative overflow-hidden py-16 px-6">
-        {/* Background effects */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl"></div>
-          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-red-500/10 rounded-full blur-3xl"></div>
-        </div>
-        
-        <div className="max-w-6xl mx-auto relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            {/* Left side - Text content */}
-            <div>
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg p-2 shadow-lg">
-                  <img src={logoGtd} alt="GTD" className="w-full h-full" />
-                </div>
-                <span className="inline-block bg-red-500/20 border border-red-400 text-red-300 text-xs font-bold px-4 py-2 rounded-full">ANÁLISIS CASO REAL</span>
-              </div>
-              <h1 className="text-4xl md:text-5xl font-bold text-white mb-3 leading-tight">
-                Análisis Legal: Ataque GTD 2023
-              </h1>
-              <p className="text-xl text-slate-300 mb-4">
-                Ransomware a infraestructura crítica estatal
-              </p>
-              <p className="text-slate-400 mb-6">
-                Análisis integral del ataque a la Gobernación Territorial Digital, sus implicaciones legales bajo leyes chilenas y recomendaciones de seguridad.
-              </p>
-              
-              {/* Key stats */}
-              <div className="grid grid-cols-3 gap-4 mb-6">
-                <div className="bg-blue-500/20 border border-blue-400 rounded-lg p-3">
-                  <div className="text-2xl font-bold text-blue-300">21.459</div>
-                  <div className="text-xs text-blue-200">Ley de Ciberdelitos</div>
-                </div>
-                <div className="bg-red-500/20 border border-red-400 rounded-lg p-3">
-                  <div className="text-2xl font-bold text-red-300">19.628</div>
-                  <div className="text-xs text-red-200">Protección de Datos</div>
-                </div>
-                <div className="bg-purple-500/20 border border-purple-400 rounded-lg p-3">
-                  <div className="text-2xl font-bold text-purple-300">7+</div>
-                  <div className="text-xs text-purple-200">Secciones Análisis</div>
-                </div>
-              </div>
-              
-              <div className="flex flex-col sm:flex-row gap-3">
-                <a href="#sections" className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition transform hover:scale-105 shadow-lg">
-                  Explorar Análisis
-                </a>
-                <a
-                  href="https://github.com/iqisd"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg border border-slate-600 bg-slate-800/60 text-white font-bold transition hover:border-slate-400 hover:bg-slate-700"
-                >
-                  <ExternalLink size={18} />
-                  GitHub
-                </a>
-              </div>
-              
-              <p className="text-slate-400 text-sm mt-6">
-                📚 TI3034 – Fundamentos de Seguridad de la Información | INACAP Valparaíso
-              </p>
-            </div>
-            
-            {/* Right side - Visual */}
-            <div className="hidden md:flex items-center justify-center">
-              <div className="relative w-full max-w-sm">
-                {/* Animated background cards */}
-                <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-red-500/20 to-transparent rounded-lg transform rotate-12"></div>
-                <div className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-br from-blue-500/20 to-transparent rounded-lg transform -rotate-12"></div>
-                
-                {/* Main security icon */}
-                <div className="relative z-10">
-                  <div className="w-64 h-64 mx-auto rounded-2xl bg-gradient-to-br from-slate-700/50 to-slate-800/50 backdrop-blur-sm border border-slate-600/50 flex items-center justify-center">
-                    <div className="w-48 h-48 bg-gradient-to-br from-red-500 to-red-700 rounded-xl p-8 shadow-2xl flex items-center justify-center">
-                      <Shield size={120} className="text-white drop-shadow-lg" />
-                    </div>
-                  </div>
-                  
-                  {/* Floating elements */}
-                  <div className="absolute top-8 right-8 w-20 h-20 bg-blue-500/30 rounded-full border border-blue-400/50 flex items-center justify-center animate-pulse">
-                    <Lock size={32} className="text-blue-300" />
-                  </div>
-                  <div className="absolute bottom-8 left-8 w-20 h-20 bg-purple-500/30 rounded-full border border-purple-400/50 flex items-center justify-center animate-pulse" style={{animationDelay: "1s"}}>
-                    <Eye size={32} className="text-purple-300" />
-                  </div>
-                  <div className="absolute top-1/2 right-0 w-20 h-20 bg-cyan-500/30 rounded-full border border-cyan-400/50 flex items-center justify-center animate-pulse" style={{animationDelay: "2s"}}>
-                    <Zap size={32} className="text-cyan-300" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      <main className="flex-1 max-w-6xl mx-auto px-6 py-12 w-full relative z-10">
-        {/* Case Analysis Section */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold text-white mb-6">📋 Caso de Análisis</h2>
-          <div className="bg-gradient-to-r from-red-500/20 to-red-600/10 backdrop-blur-sm rounded-lg shadow-xl p-8 border-l-4 border-red-500 border-r border-t border-b border-slate-700">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div>
-                <h3 className="text-xl font-bold text-red-300 mb-2">⚠️ Gobernación Territorial Digital (GTD) - 2023</h3>
-                <p className="text-slate-300 mb-3">
-                  Ataque ransomware a infraestructura crítica estatal que comprometió sistemas de gestión territorial, afectó múltiples gobiernos locales e involucró filtración de datos personales.
-                </p>
-              </div>
-              <div>
-                <h4 className="text-white font-bold mb-3">🎯 Tipo de Ataque</h4>
-                <ul className="space-y-2 text-slate-300">
-                  <li className="flex items-center gap-2"><span className="text-red-400">●</span> Ransomware</li>
-                  <li className="flex items-center gap-2"><span className="text-red-400">●</span> Extorsión Digital</li>
-                  <li className="flex items-center gap-2"><span className="text-red-400">●</span> Exfiltración Datos</li>
-                  <li className="flex items-center gap-2"><span className="text-red-400">●</span> Interrupción Servicios</li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="text-white font-bold mb-3">⚖️ Marco Legal</h4>
-                <ul className="space-y-2 text-slate-300 text-sm">
-                  <li>✓ Ley 21.459 (Ciberdelitos)</li>
-                  <li>✓ Ley 19.628 (Protección Datos)</li>
-                  <li>✓ Ley 21.595 (Seguridad Estatal)</li>
-                  <li>✓ Código Penal Chileno</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Sections Grid */}
-        <section id="sections">
-          <h2 className="text-3xl font-bold text-white mb-8">📚 Secciones del Análisis</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {secciones.map((seccion, idx) => {
-              const Icon = seccion.icono;
-              const colorMap = {
-                blue: "from-blue-500 to-blue-700 hover:shadow-blue-500/50",
-                red: "from-red-500 to-red-700 hover:shadow-red-500/50",
-                purple: "from-purple-500 to-purple-700 hover:shadow-purple-500/50",
-                green: "from-green-500 to-green-700 hover:shadow-green-500/50",
-                cyan: "from-cyan-500 to-cyan-700 hover:shadow-cyan-500/50",
-                teal: "from-teal-500 to-teal-700 hover:shadow-teal-500/50",
-                indigo: "from-indigo-500 to-indigo-700 hover:shadow-indigo-500/50",
-              };
-              
-              const borderColorMap = {
-                blue: "border-blue-400/30",
-                red: "border-red-400/30",
-                purple: "border-purple-400/30",
-                green: "border-green-400/30",
-                cyan: "border-cyan-400/30",
-                teal: "border-teal-400/30",
-                indigo: "border-indigo-400/30",
-              };
-
-              return (
-                <Link
-                  key={idx}
-                  to={seccion.ruta}
-                  className={`group bg-gradient-to-br ${colorMap[seccion.color]} text-white rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 border ${borderColorMap[seccion.color]} hover:border-white/50 relative overflow-hidden`}
-                >
-                  {/* Background effect */}
-                  <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  
-                  {/* Content */}
-                  <div className="relative z-10">
-                    {seccion.logo ? (
-                      <div className="w-14 h-14 mb-4 bg-white/20 rounded-lg p-2 group-hover:bg-white/30 transition-colors">
-                        <img src={seccion.logo} alt={seccion.titulo} className="w-full h-full" />
-                      </div>
-                    ) : (
-                      <Icon size={40} className="mb-4 group-hover:scale-110 transition-transform" />
-                    )}
-                    <h3 className="text-lg font-bold mb-2 group-hover:translate-x-1 transition-transform">{seccion.titulo}</h3>
-                    <p className="text-sm text-white/80 group-hover:text-white transition-colors">{seccion.description}</p>
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
-        </section>
-      </main>
-
-      <footer className="bg-slate-900 text-slate-300 text-sm py-6 px-6 border-t border-slate-700">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-2 gap-4 mb-4">
-            <div>
-              <p><strong>Estudiante:</strong> Esteban Gonzalo Rojas Leiva</p>
-              <p><strong>Email:</strong> esteban2002.rojas.l@gmail.com</p>
-            </div>
-            <div>
-              <p><strong>Docente:</strong> Rubén Schnettler Lucero</p>
-              <p><strong>Institución:</strong> INACAP Valparaíso | 2026</p>
-            </div>
-          </div>
-          <p className="text-center text-xs border-t border-slate-700 pt-4">
-            Análisis Legal de Caso Real | Evaluación Sumativa N°2 | TI3034 Fundamentos de Seguridad de la Información
-          </p>
-        </div>
-      </footer>
-    </div>
-  );
-}
+const pages = [
+  {
+    title: 'Presentación del Informe',
+    subtitle: 'Caso GTD 2023',
+    accent: 'from-cyan-500 to-blue-500',
+    description:
+      'Bienvenido a la presentación tipo diapositivas sobre el ataque ransomware a la Gobernación Territorial Digital.',
+    points: [
+      'Contexto del incidente',
+      'Normativa chilena aplicable',
+      'Impacto y recomendaciones',
+    ],
+    extras: [
+      { icon: Award, title: 'Profesional', description: 'Diseño similar a una presentación ejecutiva.' },
+      { icon: Lightbulb, title: 'Intuitiva', description: 'Navegación simple con botones y teclado.' },
+    ],
+  },
+  {
+    title: 'Contexto y Origen',
+    subtitle: 'Qué sucedió',
+    accent: 'from-purple-500 to-fuchsia-500',
+    description:
+      'El ataque comprometió sistemas críticos de gestión territorial, afectando la continuidad operativa y la seguridad de datos personales.',
+    points: [
+      'Ransomware y extorsión digital',
+      'Interrupción de servicios públicos',
+      'Posible exfiltración de datos',
+    ],
+    extras: [
+      { icon: Activity, title: 'Impacto real', description: 'Ataque a infraestructura crítica y servicios públicos.' },
+      { icon: Sparkles, title: 'Visión clara', description: 'Contexto presentado con claridad visual.' },
+    ],
+  },
+  {
+    title: 'Marco Legal',
+    subtitle: 'Leyes aplicables',
+    accent: 'from-emerald-500 to-teal-500',
+    description:
+      'El análisis se apoya en la normativa chilena de ciberdelitos, protección de datos y seguridad estatal.',
+    points: [
+      'Ley 21.459 de Ciberdelitos',
+      'Ley 19.628 de Protección de Datos',
+      'Código Penal y seguridad pública',
+    ],
+    extras: [
+      { icon: ShieldCheck, title: 'Fundamento legal', description: 'Normativa central para el informe.' },
+      { icon: Layers, title: 'Capas de cumplimiento', description: 'Seguridad técnica y legal combinadas.' },
+    ],
+  },
+  {
+    title: 'Impacto y Responsabilidad',
+    subtitle: 'Riesgos legales',
+    accent: 'from-orange-500 to-red-500',
+    description:
+      'El incidente genera responsabilidades legales directas sobre la institución afectada y sus controles de seguridad.',
+    points: [
+      'Responsabilidad civil y sanciones',
+      'Obligaciones de notificación',
+      'Gestión de incidentes y evidencia',
+    ],
+    extras: [
+      { icon: CheckCircle, title: 'Claridad', description: 'Los riesgos se presentan con foco legal.' },
+      { icon: Star, title: 'Prioridad', description: 'Gestión de incidentes como prioridad estratégica.' },
+    ],
+  },
+  {
+    title: 'Recomendaciones',
+    subtitle: 'Medidas clave',
+    accent: 'from-sky-500 to-cyan-500',
+    description:
+      'Propuestas concretas para fortalecer la preparación, respuesta y cumplimiento en entornos críticos.',
+    points: [
+      'Monitoreo continuo y detección temprana',
+      'Protección y cifrado de datos sensibles',
+      'Capacitación y cultura de seguridad',
+    ],
+    extras: [
+      { icon: Lightbulb, title: 'Acción', description: 'Recomendaciones claras y accionables.' },
+      { icon: Award, title: 'Resultados', description: 'Mejoras tangibles en seguridad y cumplimiento.' },
+    ],
+  },
+  {
+    title: 'Conclusión',
+    subtitle: 'Lecciones aprendidas',
+    accent: 'from-violet-500 to-indigo-500',
+    description:
+      'Una respuesta efectiva a incidentes combina seguridad técnica, claridad legal y una cultura de prevención.',
+    points: [
+      'Seguridad y ley deben ir juntas',
+      'Preparación reduce impactos',
+      'La transparencia fortalece la respuesta',
+    ],
+    extras: [
+      { icon: Star, title: 'Aprendizaje', description: 'Lecciones clave para próximas defensas.' },
+      { icon: ShieldCheck, title: 'Resiliencia', description: 'Fortalecer controles y respuesta.' },
+    ],
+  },
+]
 
 function App() {
+  const [activePage, setActivePage] = useState(0)
+
+  const toggleFullscreen = () => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen?.().catch(() => {})
+    } else {
+      document.exitFullscreen?.().catch(() => {})
+    }
+  }
+
+  const exportPdf = () => {
+    // Create a printable document containing ALL slides with page-breaks between them
+    // Only copy inline <style> tags that do not contain @media print rules
+    const styles = Array.from(document.querySelectorAll('style'))
+      .filter((s) => !s.textContent.includes('@media print'))
+      .map((n) => n.outerHTML)
+      .join('\n')
+
+    const slidesHTML = pages
+      .map((p) => {
+        const points = (p.points || [])
+          .map((pt) => `<li style="margin-bottom:8px;font-size:18px;color:#111">${pt}</li>`)
+          .join('')
+        const extras = (p.extras || [])
+          .map((e) => `<div style="margin-top:12px"><strong style="display:block;color:#111">${e.title}</strong><div style="color:#222">${e.description}</div></div>`)
+          .join('')
+
+        return `
+          <section class="print-slide" style="box-sizing:border-box;width:100%;min-height:100vh;display:block;padding:48px;page-break-after:always;">
+            <h1 style="font-size:40px;margin:0 0 12px;color:#000">${p.title}</h1>
+            <h2 style="font-size:20px;margin:0 0 18px;color:#333">${p.subtitle}</h2>
+            <p style="font-size:16px;max-width:900px;color:#222">${p.description}</p>
+            <ul style="margin-top:18px;padding-left:18px">${points}</ul>
+            <div style="margin-top:18px">${extras}</div>
+          </section>`
+      })
+      .join('\n')
+
+    const extraPrintStyles = `
+      <style>
+        @page { size: auto; margin: 12mm; }
+        html,body{height:100%;margin:0;-webkit-print-color-adjust:exact}
+        /* Force white backgrounds and black text for printing */
+        body, html { background: white !important; color: #000 !important; }
+        * { background: transparent !important; color: #000 !important; box-shadow: none !important; }
+        .print-slide{background:white !important;color:black !important}
+      </style>`
+
+    const printHTML = `<!doctype html><html><head><meta charset="utf-8"><title>Exportar presentación</title>${styles}${extraPrintStyles}</head><body>${slidesHTML}</body></html>`
+
+    const printWindow = window.open('', '_blank')
+    if (!printWindow) {
+      window.print()
+      return
+    }
+
+    printWindow.document.open()
+    printWindow.document.write(printHTML)
+    printWindow.document.close()
+    printWindow.focus()
+
+    // Give the browser a moment to render, then print and close the window.
+    setTimeout(() => {
+      printWindow.print()
+      printWindow.close()
+    }, 700)
+  }
+
+  useEffect(() => {
+    const onKeyDown = (event) => {
+      if (event.key === 'ArrowRight') {
+        setActivePage((value) => Math.min(pages.length - 1, value + 1))
+      }
+      if (event.key === 'ArrowLeft') {
+        setActivePage((value) => Math.max(0, value - 1))
+      }
+    }
+
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [])
+
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/resumen" element={<Resumen />} />
-        <Route path="/marco" element={<Marco />} />
-        <Route path="/delitos" element={<Delitos />} />
-        <Route path="/comparacion" element={<Comparacion />} />
-        <Route path="/responsabilidades" element={<Responsabilidades />} />
-        <Route path="/datos" element={<Datos />} />
-        <Route path="/conclusiones" element={<Conclusiones />} />
-        <Route path="/prompts" element={<Prompts />} />
-      </Routes>
-    </Router>
+    <div className="relative min-h-screen overflow-hidden bg-slate-950 text-slate-100">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(56,189,248,0.16),_transparent_24%),radial-gradient(circle_at_bottom_right,_rgba(168,85,247,0.14),_transparent_30%)]" />
+      <div className="relative z-10 mx-auto flex min-h-screen max-w-full flex-col">
+        <div className="flex h-screen w-full items-center justify-center overflow-hidden px-6 py-8">
+          <div className="flex h-full w-full transition-transform duration-700 ease-in-out" style={{ transform: `translateX(-${activePage * 100}%)` }}>
+            {pages.map((page, index) => (
+              <section
+                key={page.title}
+                className={`relative flex h-full min-w-full flex-col justify-between gap-8 overflow-hidden rounded-[2rem] border border-white/10 bg-slate-900/90 p-12 shadow-2xl ring-1 ring-white/10 backdrop-blur-xl animate-fade-in ${
+                  index === activePage ? 'slide-current' : 'slide'
+                }`}
+                aria-hidden={index === activePage ? 'false' : 'true'}
+              >
+                <div className="pointer-events-none absolute -top-10 right-6 h-44 w-44 rounded-full bg-cyan-500/10 blur-3xl" />
+                <div className="pointer-events-none absolute -bottom-14 left-10 h-44 w-44 rounded-full bg-violet-500/10 blur-3xl" />
+                <div className="pointer-events-none absolute top-1/2 left-1/2 h-80 w-80 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/5 blur-3xl" />
+
+                <header className="relative z-10 space-y-5">
+                  <span className="inline-flex items-center gap-2 rounded-full bg-slate-100/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-cyan-300 shadow-sm">
+                    <Sparkles size={16} /> Diapositiva {index + 1}
+                  </span>
+                  <div className="relative overflow-hidden rounded-full bg-gradient-to-r from-white/10 to-white/5 p-4 shadow-inner">
+                    <div className="absolute -right-10 -top-10 h-28 w-28 rounded-full bg-cyan-400/10 blur-3xl" />
+                    <div className="absolute -left-10 bottom-0 h-32 w-32 rounded-full bg-pink-500/10 blur-3xl" />
+                    <div className="relative inline-flex items-center gap-3 rounded-full bg-slate-950/95 px-4 py-2 text-sm font-semibold text-white shadow-xl ring-1 ring-white/10">
+                      <ShieldCheck size={20} className="text-cyan-300" />
+                      <span>{page.subtitle}</span>
+                    </div>
+                  </div>
+                  <h1 className="text-5xl font-bold tracking-tight text-white sm:text-6xl md:text-7xl">{page.title}</h1>
+                  <p className="max-w-3xl text-lg leading-8 text-slate-300 sm:text-xl">{page.description}</p>
+                </header>
+
+                <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr] relative z-10">
+                  <div className="rounded-[2rem] border border-white/10 bg-slate-950/85 p-8 shadow-lg ring-1 ring-white/5 animate-pop-in">
+                    <h2 className="text-xl font-semibold text-white">Puntos clave</h2>
+                    <div className="mt-6 space-y-4">
+                      {page.points.map((point) => (
+                        <div key={point} className="flex items-start gap-4 rounded-3xl border border-white/5 bg-slate-900/80 p-4 transition duration-300 hover:-translate-y-1 hover:border-cyan-500/20">
+                          <div className="mt-1 rounded-2xl bg-cyan-500/15 p-3 text-cyan-300 shadow-inner">
+                            <Activity size={20} />
+                          </div>
+                          <p className="text-slate-200">{point}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="grid gap-4">
+                    {page.extras.map((extra) => {
+                      const Icon = extra.icon
+                      return (
+                        <div key={extra.title} className="rounded-[2rem] border border-white/10 bg-gradient-to-br from-slate-900/95 to-slate-800/80 p-8 shadow-2xl ring-1 ring-white/5 animate-pop-in">
+                          <div className="flex items-center gap-3 text-cyan-300">
+                            <Icon size={22} />
+                            <p className="text-lg font-semibold text-white">{extra.title}</p>
+                          </div>
+                          <p className="mt-4 text-slate-400">{extra.description}</p>
+                        </div>
+                      )
+                    })}
+                  </div>
+                </div>
+
+                <footer className="relative z-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                  <div className="flex flex-wrap gap-3 text-sm text-slate-400">
+                    <span className="inline-flex items-center gap-2 rounded-full bg-white/5 px-3 py-2 text-slate-200 shadow-sm">
+                      <Layers size={16} className="text-cyan-300" />
+                      Slider estilo presentación
+                    </span>
+                    <span className="inline-flex items-center gap-2 rounded-full bg-white/5 px-3 py-2 text-slate-200 shadow-sm">
+                      <CheckCircle size={16} className="text-emerald-300" />
+                      Transiciones suaves
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+                    <button
+                      onClick={() => setActivePage((value) => Math.max(0, value - 1))}
+                      className="inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm font-semibold text-slate-100 transition hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-40"
+                      disabled={activePage === 0}
+                    >
+                      <ArrowLeft size={18} /> Anterior
+                    </button>
+                    <div className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 px-5 py-3 text-sm font-semibold text-slate-950 shadow-lg">
+                      {activePage + 1} / {pages.length}
+                    </div>
+                    <button
+                      onClick={() => setActivePage((value) => Math.min(pages.length - 1, value + 1))}
+                      className="inline-flex items-center justify-center gap-2 rounded-full bg-cyan-500 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-400 disabled:cursor-not-allowed disabled:opacity-40"
+                      disabled={activePage === pages.length - 1}
+                    >
+                      Siguiente <ArrowRight size={18} />
+                    </button>
+                  </div>
+
+                  <div className="flex items-center gap-3 mt-3 sm:mt-0">
+                    <button onClick={toggleFullscreen} className="ml-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-slate-100 hover:bg-white/10">Pantalla completa</button>
+                    <button onClick={exportPdf} className="ml-2 inline-flex items-center gap-2 rounded-full bg-emerald-500 px-4 py-2 text-sm font-medium text-white hover:bg-emerald-400">Exportar a PDF</button>
+                  </div>
+                </footer>
+              </section>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }
 
